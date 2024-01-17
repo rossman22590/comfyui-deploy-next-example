@@ -22,7 +22,7 @@ export default function Page() {
       <Tabs defaultValue="txt2img" className="w-full max-w-[500px]">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="txt2img">txt2img</TabsTrigger>
-          <TabsTrigger value="img2img">img2img</TabsTrigger>
+{/*           <TabsTrigger value="img2img">img2img</TabsTrigger> */}
         </TabsList>
         <TabsContent value="txt2img">
           <Txt2img />
@@ -62,11 +62,11 @@ function Txt2img() {
   return (
     <Card className="w-full max-w-[500px]">
       <CardHeader>
-        Comfy Deploy - Vector Line Art Tool
+        Pixio API txt2img Demo
         <div className="text-xs text-foreground opacity-50">
-          Lora -{" "}
-          <a href="https://civitai.com/models/256144/stick-line-vector-illustration">
-            stick-line-vector-illustration
+          Get your key now -{" "}
+          <a href="#">
+            sign up for our beta release!
           </a>
         </div>
       </CardHeader>
