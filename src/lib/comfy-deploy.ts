@@ -21,7 +21,7 @@ const uploadFileTypes = z.object({
 })
 
 export class ComfyDeployClient {
-  apiBase: string = "https://comfyui-deploy-11b9.vercel.app/api";
+  apiBase: string = "https://api.myapps.ai/api";
   apiToken: string;
 
   constructor({ apiBase, apiToken }: { apiBase?: string; apiToken: string }) {
