@@ -53,7 +53,8 @@ export default function Page() {
 }
 
 function Txt2img() {
-  const [prompt, setPrompt] = useState("");
+  const [positivePrompt, setPositivePrompt] = useState("");
+  const [negativePrompt, setNegativePrompt] = useState("");
   const [loading, setLoading] = useState(false);
   const [runIds, setRunIds] = useState<string[]>([]);
 
@@ -78,7 +79,7 @@ function Txt2img() {
             setLoading(true);
 
             const promises = Array(4).fill(null).map(() => {
-              return generate(prompt)
+              return generate(positivePrompt, negativePrompt)
                 .then((res) => {
                   if (res) {
                     setRunIds((ids) => [...ids, res.run_id]);
@@ -95,16 +96,23 @@ function Txt2img() {
             });
           }}
         >
-          <Label htmlFor="picture">Image prompt</Label>
-          <Input
-            id="picture"
-            type="text"
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-          />
-          <Button type="submit" className="flex gap-2" disabled={loading}>
-            Generate {loading && <LoadingIcon />}
-          </Button>
+           <Label htmlFor="positive-prompt">Positive prompt</Label>
+            <Input
+              id="positive-prompt"
+              type="text"
+              value={positivePrompt}
+              onChange={(e) => setPositivePrompt(e.target.value)}
+            />
+            <Label htmlFor="negative-prompt">Negative prompt</Label>
+            <Input
+              id="negative-prompt"
+              type="text"
+              value={negativePrompt}
+              onChange={(e) => setNegativePrompt(e.target.value)}
+            />
+            <Button type="submit" className="flex gap-2" disabled={loading}>
+              Generate {loading && <LoadingIcon />}
+            </Button>
 
           <div className="grid grid-cols-2 gap-4">
             {runIds.map((runId, index) => (
